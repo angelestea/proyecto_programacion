@@ -5,8 +5,8 @@ using namespace std;
 
 int main()
 {
-    HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hConsole,2);
+    HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
+    SetConsoleTextAttribute(hConsole,2);//Cambio de color
     int logo[20][20]={
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -30,7 +30,7 @@ int main()
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
     for(int i=0;i<20;i++){
         for(int j=0;j<20;j++){
-            if(logo[i][j]==1)cout<<char(219);
+            if(logo[i][j]==1)cout<<char(219);//logo con matriz
             else cout<<" ";
         }
         cout<<endl;
