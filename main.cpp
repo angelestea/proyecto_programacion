@@ -35,6 +35,11 @@ int main()
         }
         cout<<endl;
     }
+
+    int a =1, b = 1, suma = b+a;
+
+    cout<<suma;
+
     getch();
     return 0;
 }
