@@ -39,6 +39,8 @@ int main()
     int a =1, b = 1, suma = b+a;
 
     cout<<suma;
+    cout<<""<<endl;
+    cout<<suma*2;
 
     getch();
     return 0;
