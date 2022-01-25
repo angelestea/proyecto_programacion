@@ -38,7 +38,9 @@ int main()
 
     int a =1, b = 1, suma = b+a;
 
-    cout<<suma;
+    cout<<suma<<endl;
+
+    cout<<suma*2<<endl;
 
     cout<<"HOLA QUE TAL";
 
