@@ -35,6 +35,30 @@ int main()
         }
         cout<<endl;
     }
+    //docente y administrador
+
+
+
+
+    //crear curso
+
+
+
+
+
+    //registrar nota
+
+
+
+
+    //modificar
+
+
+
+
+
+
+
     getch();
     return 0;
 }
