@@ -35,11 +35,24 @@ int main()
         }
         cout<<endl;
     }
+    int personal;
     //docente y administrador
+    cout<<"1.Docente"<<endl;
+    cout<<"2.Administrador"<<endl;
+    cout<<endl;
+    cin>>personal;
+    if (personal==1){
+        system("cls");
+        cout<<"Ingreso del sistema como docente"<<endl;
+    }else{
+        if(personal==2){
+            system("cls");
+            cout<<"Ingreso del sistema como administrador"<<endl;
+        }else{
+            cout<<"Datos Incorrectos"<<endl;
+        }
 
-
-
-
+    }
     //crear curso
 
 
