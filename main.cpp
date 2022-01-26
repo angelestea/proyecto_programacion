@@ -35,12 +35,29 @@ int main()
         }
         cout<<endl;
     }
+    //docente y administrador
 
-    int a =1, b = 1, suma = b+a;
 
-    cout<<suma;
-    cout<<""<<endl;
-    cout<<suma*2;
+
+
+    //crear curso
+
+
+
+
+
+    //registrar nota
+
+
+
+
+    //modificar
+
+
+
+
+
+
 
     getch();
     return 0;
