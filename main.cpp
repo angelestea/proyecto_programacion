@@ -1,6 +1,12 @@
 #include <iostream>
+<<<<<<< HEAD
 #include <windows.h>
 #include <conio.h>
+=======
+#include<windows.h>
+#include<conio.h>
+
+>>>>>>> Angel
 
 #define user "Administrador" //Se inicializa el usuario
 #define pass "prueba" //Se inicializa la contraseña
