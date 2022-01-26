@@ -42,14 +42,14 @@ int main()
     cout<<endl;
     cin>>personal;
     if (personal==1){
-        system("cls");
-        cout<<"Ingreso del sistema como docente"<<endl;
+        system("cls");//Limpia la consola
+        cout<<"Ingreso del sistema como docente"<<endl;//si el usuario coloca 1 ingresa al if e imprimira el cout
     }else{
         if(personal==2){
             system("cls");
-            cout<<"Ingreso del sistema como administrador"<<endl;
+            cout<<"Ingreso del sistema como administrador"<<endl;//si el usuario coloca 2 ingresa al if e imprimira el cout
         }else{
-            cout<<"Datos Incorrectos"<<endl;
+            cout<<"Datos Incorrectos"<<endl;//si el usurio escribe un numero diferente a 1 o 2
         }
 
     }
