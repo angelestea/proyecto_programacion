@@ -1,0 +1,29 @@
+1. Tener cambiado (master por main (obligatrio))(investigar en google)
+	*Revisar con git config --list que tengamos el mismo email y usuario que en github. 
+2. git pull traer del repositorio remoto al local
+3. git push dan su repositorio local remoto
+4. git status ver el estado de la carpeta
+5. git add . sirve para agregar todos los cambios
+6. git branch sirve para ver las ramas de cada uno.
+7. git commit -am "mensaje cualquiera" 
+8. salir git commit "q"
+9. git checkout "nombre de rama" cambiar de rama.
+	*git checkout main 
+	*ya en main escriben git merge "su nombre" para mezclar
+
+Pasos para subir el merge realizado 
+1. git pull origin main para traer el repositorio remoto (github) a nuestro 
+repositorio local.
+2. git push origin main para mandar el update
+
+*En caso de conflicto*(main|MERGING)
+
+conflicto ">>>>>>>>>>>>>>>>>>>>>>>>>> HEAD"(lo borran)
+Una vez borrado guardan.
+
+En caso de merge branch escribir:
+Esc + shift + "zz"
+
+*Evitar*
+1. git reset
+Y todos los códigos que estén realcionados con borrar.
