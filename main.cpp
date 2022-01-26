@@ -1,6 +1,13 @@
 #include <iostream>
-#include<windows.h>
-#include<conio.h>
+#include <windows.h>
+#include <conio.h>
+
+#define user "Administrador" //Se inicializa el usuario
+#define pass "prueba" //Se inicializa la contraseña
+#define user2 "Docente"
+#define pass2 "prueba2"
+
+
 using namespace std;
 
 int main()
@@ -35,6 +42,7 @@ int main()
         }
         cout<<endl;
     }
+    string usuario, password;
     int personal;
     //docente y administrador
     cout<<"1.Docente"<<endl;
@@ -43,7 +51,16 @@ int main()
     cin>>personal;
     if (personal==1){
         system("cls");//Limpia la consola
-        cout<<"Ingreso del sistema como docente"<<endl;//si el usuario coloca 1 ingresa al if e imprimira el cout
+        cout<<"*Ingreso al sistema como docente*"<<endl;//si el usuario coloca 1 ingresa al if e imprimirá el cout
+        cout<<endl;
+        //cout<<endl;
+        cout<<"\t=================="<<endl;
+        cout<<"\t|Login de docencia|"<<endl;
+        cout<<"\t=================="<<endl;
+        cout<<"Usuario: ";//Se solicita al usuario ingresar el usuario precisamente, en este caso es "Docente".
+        getline(cin, usuario);//getline lee el usuario digitado.
+        cout<<"Password: ";
+        getline(cin, password);//Igualmente aquí con la diferencia de que esta vez será con la contraseña.
     }else{
         if(personal==2){
             system("cls");
