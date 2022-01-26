@@ -69,9 +69,9 @@ int main()
 
 
 
-=======
+
     //crear curso
->>>>>>> Angel
+
 
 
 
