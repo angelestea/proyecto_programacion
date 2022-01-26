@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
-    SetConsoleTextAttribute(hConsole,2);//Cambio de color
+    SetConsoleTextAttribute(hConsole,2);//Cambio de color ejemplo de conflicto
     int logo[20][20]={
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
