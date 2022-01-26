@@ -28,7 +28,7 @@ int main()
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
-    for(int i=0;i<20;i++){
+    for(int i=0;i<20;i++){//conflicto ejemplo
         for(int j=0;j<20;j++){
             if(logo[i][j]==1)cout<<char(219);//logo con matriz
             else cout<<" ";
@@ -69,6 +69,9 @@ int main()
 
 
 
+=======
+    //crear curso
+>>>>>>> Angel
 
 
 
