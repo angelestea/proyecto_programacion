@@ -5,6 +5,11 @@
 #include<string.h>
 #include<windows.h>
 #include<fstream>
+#define docente "Juan Torres"
+#define admin "Juliana Zambrano"
+#define contradocen 546756
+#define contraadmin 987654
+
 using namespace std;
 void crearcurso();
 int main()
@@ -42,6 +47,8 @@ int main()
     string usuario="";
     int personal=0,password=0,nuevo=0;
     int opcion=0,cursoex=0;
+    cout<<"Sistema de uso academico para docente y administrador..."<<endl;
+    cout<<endl;
     //docente y administrador
     cout<<"1.Docente"<<endl;
     cout<<"2.Administrador"<<endl;
@@ -49,8 +56,6 @@ int main()
     cin>>personal;
     if (personal==1){
         system("cls");//Limpia la consola
-        cout<<"*Ingreso al sistema como docente*"<<endl;//si el usuario coloca 1 ingresa al if e imprimirá el cout
-        cout<<endl;
         cout<<"\t=================="<<endl;
         cout<<"\t|Login de docencia|"<<endl;
         cout<<"\t=================="<<endl;
@@ -65,8 +70,9 @@ int main()
     }else{
         if(personal==2){
             system("cls");
-            cout<<"Ingreso del sistema como administrador"<<endl;//si el usuario coloca 2 ingresa al if e imprimira el cout
-            cout<<endl;
+            cout<<"\t========================"<<endl;
+            cout<<"\t|Login de administrador|"<<endl;
+            cout<<"\t========================"<<endl;
             cout<<"Usuario: ";//Se solicita al usuario ingresar el usuario precisamente, en este caso es "Docente".
             cin.ignore();
             getline(cin,usuario);
@@ -79,30 +85,35 @@ int main()
         }
 
     }
-    cout<<"1. cerar un nuevo curso"<<endl;
-    cout<<"2. crear un nuevo alumno"<<endl;
-    cout<<"3. crear nueva nota"<<endl;
-    cout<<"4. modificar"<<endl;
-    cin>>opcion;//variable para tipo entero que servira para el condicionla en la parte inferior
+    if (usuario==docente && contradocen==password||usuario==admin && contraadmin==password){
+        cout<<"1. cerar un nuevo curso"<<endl;
+        cout<<"2. crear un nuevo alumno"<<endl;
+        cout<<"3. crear nueva nota"<<endl;
+        cout<<"4. modificar"<<endl;
+        cin>>opcion;//variable para tipo entero que servira para el condicionla en la parte inferior
 
-    switch(opcion){
-        case 1:{
-            crearcurso();
+        switch(opcion){
+            case 1:{
+                crearcurso();
+                break;
+            }
+            case 2:{
+                //registrar nuevo alumno
             break;
-        }
-        case 2:{
-            //registrar nuevo alumno
-        break;
-        }
-        case 3:{
+            }
+            case 3:{
              //registrar nota
-        break;
-        }
-        case 4:{
+            break;
+            }
+            case 4:{
             //modificar
-        break;
-        }
+            break;
+            }
 
+        }
+    }else{
+        cout<<endl;
+        cout<<"Datos incorrectos..."<<endl;
     }
 
     getch();
