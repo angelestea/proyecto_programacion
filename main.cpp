@@ -1,10 +1,6 @@
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
-<<<<<<< HEAD
-#include<windows.h>
-#include<conio.h>
-
 
 
 #define user "Administrador" //Se inicializa el usuario
@@ -12,7 +8,6 @@
 #define user2 "Docente"
 #define pass2 "prueba2"
 
-=======
 #include<stdlib.h>
 #include<string.h>
 #include<windows.h>
@@ -21,10 +16,14 @@
 #define admin "Juliana Zambrano"
 #define contradocen 546756
 #define contraadmin 987654
->>>>>>> 5c8e18991c086aad77391abd7be99c55404c284a
+
 
 using namespace std;
-void crearcurso();
+
+void crearcurso();//para definir la función en scope global
+
+void crearNuevoAlumno();//--->se define función crearNuevoAlumno en scope global
+
 int main()
 {
     HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
@@ -111,7 +110,7 @@ int main()
                 break;
             }
             case 2:{
-                //registrar nuevo alumno
+                crearNuevoAlumno();
             break;
             }
             case 3:{
@@ -134,33 +133,97 @@ int main()
 }
 void crearcurso(){
     int cursoex=0;
+
     string nombrecurso,texto;
     ofstream archivo1;//declarar la variabe de un archivo para ingresar datos
-    ofstream temp;
+
     archivo1.open("cursos.txt",ios::app);//abrir el archivo tipo app para incluir cosas
+
     if(archivo1.fail()){
         cout<<"No se pudo abrir el archivo";
         exit(1);
     }
     system("cls");
+
     cout<<"Ingrese el nombre del curso:";
     cin.ignore();
     getline(cin,nombrecurso);
-    archivo1<<nombrecurso<<endl;//se almacenaran que que el ususario ingrese en la variabe
+
+    archivo1<<nombrecurso<<endl;//se almacenará lo que el ususario ingrese en la variabe
     archivo1.close();
-    cout<<"Desa saber los cursos existentes 1 si 0 no:";
-    cin>>cursoex;//variable tipo int que sirve para el bucle
+
+    cout<<"Desea saber los cursos existentes 1 si 0 no:";
+    cin>>cursoex;//variable tipo int que sirve para el condicional
+
     if(cursoex==1){
-        ifstream archivo2;//variabel de archivo tipo lectura
-        archivo2.open("cursos.txt",ios::in);//abrir el archivo , ios::in para lectura
-        temp.open("temp.txt");
+        ifstream archivo2;//variable de archivo tipo de lectura
+        archivo2.open("cursos.txt",ios::in);//abrir el archivo, ios::in para lectura
+
         if(archivo2.fail()){
         cout<<"No se pudo abrir el archivo";//en caso de error
         exit(1);}
+
         while(!archivo2.eof()){
             getline(archivo2,texto);
-            cout<<texto<<endl;//Imprime en pantalla lo que se encuneta en cursos.txt
+            cout<<texto<<endl;//Imprime en pantalla lo que se encuentra en cursos.txt
         }
              archivo2.close();
+    }
+}
+
+void crearNuevoAlumno(){
+    char alumnosExistentes;
+    char otroAlumno;
+    string nombreAlumno, texto;
+    ofstream archivo;//--->Declara la variable de archivo2 para ingresas datos
+
+    archivo.open("alumnos.txt", ios::app);//-->se declara app para agregar más datos
+
+    if(archivo.fail()){
+        cout<<"Archivo invalido";
+        exit(1);
+    }
+
+    system("cls");
+
+    cout<<"Ingrese el nombre del alumno: "<<endl;
+    cin.ignore();
+    getline(cin,nombreAlumno);
+
+    archivo<<nombreAlumno<<endl;
+    archivo.close();
+
+    cout<<"Desea ingresar otro alumno? (S/N)"<<endl;
+    cin>>otroAlumno;
+
+    while(otroAlumno=='s'||otroAlumno=='S'){
+    cout<<"Ingrese el nombre del alumno"<<endl;
+    cin.ignore();
+    getline(cin,nombreAlumno);
+
+    archivo<<nombreAlumno<<endl;
+    archivo.close();
+    system("cls");//--->Sirve para limpiar pantalla
+
+    cout<<"Desea ingresar otro alumno? (S/N)"<<endl;
+    cin>>otroAlumno;
+    };
+
+    cout<<"Escriba 'S' si desea ver los alumnos existentes";
+    cin>>alumnosExistentes;//---->se recepta la variable de tipo char para cumplir con la condicional a declarar a continuación
+
+    if(alumnosExistentes=='S'|| alumnosExistentes=='s'){
+        ifstream archivo1;//-->ifstream servirá para la lectura del file
+        archivo1.open("alumnos.txt", ios::in);//--->Abrirá el archivo de alumnos creador previamente
+
+        if(archivo1.fail()){
+            cout<<"Archivo invalido";
+            exit(1);
+        }
+
+        while(!archivo1.eof()){
+            getline(archivo1,texto);
+            cout<<texto<<endl;//--->imprimirá en pantalla el contenido del documento
+        }
     }
 }
