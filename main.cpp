@@ -24,6 +24,8 @@ void crearcurso();//para definir la función en scope global
 
 void crearNuevoAlumno();//--->se define función crearNuevoAlumno en scope global
 
+void crearNuevaNota();//para definir la función en scope global
+
 int main()
 {
     HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
@@ -114,6 +116,9 @@ int main()
             break;
             }
             case 3:{
+                crearNuevaNota();
+                    remove("alumnos.txt");
+                    rename("temp.txt","alumnos.txt");
              //registrar nota
             break;
             }
@@ -132,98 +137,93 @@ int main()
     return 0;
 }
 void crearcurso(){
+    system("cls");
+        HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
+    SetConsoleTextAttribute(hConsole,7);
     int cursoex=0;
-
     string nombrecurso,texto;
     ofstream archivo1;//declarar la variabe de un archivo para ingresar datos
+    cout<<"Ingrese el nombre del curso:";
+    cin.ignore();
+    getline(cin,nombrecurso);
 
-    archivo1.open("cursos.txt",ios::app);//abrir el archivo tipo app para incluir cosas
+    archivo1.open(nombrecurso.c_str(),ios::out);//abrir el archivo tipo app para incluir cosas
 
     if(archivo1.fail()){
         cout<<"No se pudo abrir el archivo";
         exit(1);
     }
-    system("cls");
-
-    cout<<"Ingrese el nombre del curso:";
-    cin.ignore();
-    getline(cin,nombrecurso);
-
-    archivo1<<nombrecurso<<endl;//se almacenará lo que el ususario ingrese en la variabe
-    archivo1.close();
-
-    cout<<"Desea saber los cursos existentes 1 si 0 no:";
-    cin>>cursoex;//variable tipo int que sirve para el condicional
-
-    if(cursoex==1){
-        ifstream archivo2;//variable de archivo tipo de lectura
-        archivo2.open("cursos.txt",ios::in);//abrir el archivo, ios::in para lectura
-
-        if(archivo2.fail()){
-        cout<<"No se pudo abrir el archivo";//en caso de error
-        exit(1);}
-
-        while(!archivo2.eof()){
-            getline(archivo2,texto);
-            cout<<texto<<endl;//Imprime en pantalla lo que se encuentra en cursos.txt
-        }
-             archivo2.close();
-    }
+    cout<<"Curso creado...";
 }
 
 void crearNuevoAlumno(){
+    system("cls");
+    HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
+    SetConsoleTextAttribute(hConsole,3);
     char alumnosExistentes;
-    char otroAlumno;
+    int otroAlumno=0,x=0;
+    string nombrecurso;
     string nombreAlumno, texto;
     ofstream archivo;//--->Declara la variable de archivo2 para ingresas datos
-
-    archivo.open("alumnos.txt", ios::app);//-->se declara app para agregar más datos
+    cout<<"Ingrese el nombre del curso:"<<endl;
+    cin>>nombrecurso;
+    archivo.open(nombrecurso.c_str(), ios::app);//-->se declara app para agregar más datos
 
     if(archivo.fail()){
         cout<<"Archivo invalido";
         exit(1);
     }
-
-    system("cls");
-
     cout<<"Ingrese el nombre del alumno: "<<endl;
     cin.ignore();
     getline(cin,nombreAlumno);
-
     archivo<<nombreAlumno<<endl;
+    do{
+        system("cls");
+        cout<<"1. Para ingresar otro alumno:\n 2.Para finalzar el programa."<<endl;
+        cin>>otroAlumno;
+
+        if(otroAlumno==1){
+            cout<<"Ingrese el nombre del alumno: "<<endl;
+            cin.ignore();
+            getline(cin,nombreAlumno);
+            archivo<<nombreAlumno<<endl;
+            x++;
+        }else{
+            x=1000;
+            cout<<"Fin del programa...";
+        }
+    }while(x<999);
     archivo.close();
-
-    cout<<"Desea ingresar otro alumno? (S/N)"<<endl;
-    cin>>otroAlumno;
-
-    while(otroAlumno=='s'||otroAlumno=='S'){
-    cout<<"Ingrese el nombre del alumno"<<endl;
-    cin.ignore();
-    getline(cin,nombreAlumno);
-
-    archivo<<nombreAlumno<<endl;
-    archivo.close();
-    system("cls");//--->Sirve para limpiar pantalla
-
-    cout<<"Desea ingresar otro alumno? (S/N)"<<endl;
-    cin>>otroAlumno;
-    };
-
-    cout<<"Escriba 'S' si desea ver los alumnos existentes";
-    cin>>alumnosExistentes;//---->se recepta la variable de tipo char para cumplir con la condicional a declarar a continuación
-
-    if(alumnosExistentes=='S'|| alumnosExistentes=='s'){
-        ifstream archivo1;//-->ifstream servirá para la lectura del file
-        archivo1.open("alumnos.txt", ios::in);//--->Abrirá el archivo de alumnos creador previamente
-
-        if(archivo1.fail()){
+}
+void crearNuevaNota(){
+    system("cls");
+    HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
+    SetConsoleTextAttribute(hConsole,14);
+    double notas=0;
+    string texto;
+    ifstream archivo;
+    archivo.open("alumnos.txt",ios::in);
+    if(archivo.fail()){
+        cout<<"Archivo invalido";
+        exit(1);}
+        cout<<"Ingrese las notas de los alumnos:"<<endl;
+    while(!archivo.eof()){
+        getline(archivo,texto);
+        ofstream archivo2;
+        archivo2.open("temp.txt",ios::app);
+        if(archivo2.fail()){
             cout<<"Archivo invalido";
-            exit(1);
-        }
-
-        while(!archivo1.eof()){
-            getline(archivo1,texto);
-            cout<<texto<<endl;//--->imprimirá en pantalla el contenido del documento
-        }
+            exit(1);}
+            cout<<texto<<" : ";
+            cin>>notas;
+            if(notas>=7 && notas<=10){
+                archivo2<<texto<<"---"<<notas<<"---aprobado"<<endl;
+            }else if(notas>6&&notas<5){
+                archivo2<<texto<<"---"<<notas<<"---reprobado"<<endl;
+            }else{
+                archivo2<<texto<<"---"<<notas<<"---remedial"<<endl;
+            }
+            archivo2.close();
     }
+    archivo.close();
 }
