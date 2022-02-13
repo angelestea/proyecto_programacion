@@ -215,18 +215,18 @@ void crearNuevaNota(){
         if(archivo2.fail()){
             cout<<"Archivo invalido";
             exit(1);}
-            cout<<texto<<" : ";
-            cin>>notas;
+            cout<<texto<<" : ";//escribira el nombre de las personas
+            cin>>notas;//el susario podra ingresar notas
             if(notas>=7 && notas<=10){
-                archivo2<<texto<<"---"<<notas<<"---aprobado"<<endl;
+                archivo2<<texto<<"---"<<notas<<"---aprobado"<<endl;//si esta entre 10 y 7 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
             }else if(notas>=6&&notas<=5){
-                archivo2<<texto<<"---"<<notas<<"---reprobado"<<endl;
+                archivo2<<texto<<"---"<<notas<<"---reprobado"<<endl;//si esta entr 6 y 5  agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
             }else{
-                archivo2<<texto<<"---"<<notas<<"---remedial"<<endl;
+                archivo2<<texto<<"---"<<notas<<"---remedial"<<endl;//si es inferiro a 5 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
             }
     archivo2.close();
     }
     archivo.close();
     remove(nombrecurso.c_str());
-        rename("temp.txt",nombrecurso.c_str());
+    rename("temp.txt",nombrecurso.c_str());
 }
