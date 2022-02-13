@@ -117,8 +117,6 @@ int main()
             }
             case 3:{
                 crearNuevaNota();
-                    remove("alumnos.txt");
-                    rename("temp.txt","alumnos.txt");
              //registrar nota
             break;
             }
@@ -200,9 +198,12 @@ void crearNuevaNota(){
     HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
     SetConsoleTextAttribute(hConsole,14);
     double notas=0;
-    string texto;
+    string texto,nombrecurso,resultado;
     ifstream archivo;
-    archivo.open("alumnos.txt",ios::in);
+    cout<<"Ingrese el nombre del curso:"<<endl;
+    cin>>nombrecurso;
+
+    archivo.open(nombrecurso.c_str(),ios::in);
     if(archivo.fail()){
         cout<<"Archivo invalido";
         exit(1);}
@@ -218,12 +219,14 @@ void crearNuevaNota(){
             cin>>notas;
             if(notas>=7 && notas<=10){
                 archivo2<<texto<<"---"<<notas<<"---aprobado"<<endl;
-            }else if(notas>6&&notas<5){
+            }else if(notas>=6&&notas<=5){
                 archivo2<<texto<<"---"<<notas<<"---reprobado"<<endl;
             }else{
                 archivo2<<texto<<"---"<<notas<<"---remedial"<<endl;
             }
-            archivo2.close();
+    archivo2.close();
     }
     archivo.close();
+    remove(nombrecurso.c_str());
+        rename("temp.txt",nombrecurso.c_str());
 }
