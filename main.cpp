@@ -86,7 +86,7 @@ int main()
             getline(cin,usuario);
             cout<<endl;
             cout<<endl;
-            cout<<"\n\tPassword: ";
+            cout<<"\tPassword: ";
             cin>>password;//Igualmente aquí con la diferencia de que esta vez será con la contraseña.
         }else{
             if(personal==2){
@@ -99,22 +99,22 @@ int main()
                 getline(cin,usuario);
                 cout<<endl;
                 cout<<endl;
-                cout<<"\n\tPassword: ";
+                cout<<"\tPassword: ";
                 cin>>password;//Igualmente aquí con la diferencia de que esta vez será con la contraseña.
             }else{
-                cout<<"\n\n\tDatos Incorrectos"<<endl;//si el usurio escribe un numero diferente a 1 o 2
+                cout<<"\n\tDatos Incorrectos"<<endl;//si el usurio escribe un numero diferente a 1 o 2
             }
         }
         while(s<=3){
             if (usuario==docente && contradocen){
                 s=4;
                 system("cls");
-                cout<<"1. Crear un nuevo curso"<<endl;
-                cout<<"2. Crear un nuevo alumno"<<endl;
-                cout<<"3. Crear nueva nota"<<endl;
-                cout<<"4. Modificar"<<endl;
-                cout<<"5. Eliminar"<<endl;
-                cout<<"6. Salir"<<endl;
+                cout<<"\n\t\t1. Crear un nuevo curso"<<endl;
+                cout<<"\t\t2. Crear un nuevo alumno"<<endl;
+                cout<<"\t\t3. Crear nueva nota"<<endl;
+                cout<<"\t\t4. Modificar"<<endl;
+                cout<<"\t\t5. Eliminar"<<endl;
+                cout<<"\t\t6. Salir"<<endl;
                 cin>>opcion;//variable para tipo entero que servira para el condicionla en la parte inferior
                 system("cls");
                 switch(opcion){
@@ -147,12 +147,12 @@ int main()
             }else{
                 system("cls");
                 cout<<endl;
-                cout<<"Datos incorrectos...\n"<<endl;
-                cout<<"Usuario: ";
+                cout<<"\n\tDatos incorrectos...\n"<<endl;
+                cout<<"\tUsuario: ";
                 cin.ignore();
                 getline(cin,usuario);
                 cout<<"\n";
-                cout<<"Password: ";
+                cout<<"\tPassword: ";
                 cin>>password;//Igualmente aquí con la diferencia de que esta vez será con la contraseña.
                 s++;
             }
@@ -168,17 +168,17 @@ void crearcurso(){
     int cursoex=0;
     string nombrecurso,texto;
     ofstream archivo1;//declarar la variabe de un archivo para ingresar datos
-    cout<<"Ingrese el nombre del curso:";
+    cout<<"\n\t\tIngrese el nombre del curso:";
     cin.ignore();
     getline(cin,nombrecurso);
 
     archivo1.open(nombrecurso.c_str(),ios::out);//abrir el archivo tipo app para incluir cosas
 
     if(archivo1.fail()){
-        cout<<"No se pudo abrir el archivo";
+        cout<<"\n\t\tNo se pudo abrir el archivo";
         exit(1);
     }
-    cout<<"Curso creado...";
+    cout<<"\n\t\tCurso creado...";
 }
 
 void crearNuevoAlumno(){
@@ -190,32 +190,32 @@ void crearNuevoAlumno(){
     string nombrecurso;
     string nombreAlumno, texto;
     ofstream archivo;//--->Declara la variable de archivo2 para ingresas datos
-    cout<<"Ingrese el nombre del curso:"<<endl;
+    cout<<"\n\t\tIngrese el nombre del curso:"<<endl;
     cin>>nombrecurso;
     archivo.open(nombrecurso.c_str(), ios::app);//-->se declara app para agregar más datos
 
     if(archivo.fail()){
-        cout<<"Archivo invalido";
+        cout<<"\n\t\tArchivo invalido";
         exit(1);
     }
-    cout<<"Ingrese el nombre del alumno: "<<endl;
+    cout<<"\t\tIngrese el nombre del alumno: "<<endl;
     cin.ignore();
     getline(cin,nombreAlumno);
     archivo<<nombreAlumno<<endl;
     do{
         system("cls");
-        cout<<"1. Para ingresar otro alumno:\n 2.Para finalzar el programa."<<endl;
+        cout<<"\t\t1. Para ingresar otro alumno:\n 2.Para finalzar el programa."<<endl;
         cin>>otroAlumno;
 
         if(otroAlumno==1){
-            cout<<"Ingrese el nombre del alumno: "<<endl;
+            cout<<"\t\tIngrese el nombre del alumno: "<<endl;
             cin.ignore();
             getline(cin,nombreAlumno);
             archivo<<nombreAlumno<<endl;
             x++;
         }else{
             x=1000;
-            cout<<"Fin del programa...";
+            cout<<"\t\tFin del programa...";
         }
     }while(x<999);
     archivo.close();
@@ -228,20 +228,20 @@ void crearNuevaNota(){
     string texto,nombrecurso,resultado;
     ifstream archivo;
 
-    cout<<"Ingrese el nombre del curso:"<<endl;
+    cout<<"\n\t\tIngrese el nombre del curso:"<<endl;
     cin>>nombrecurso;
 
     archivo.open(nombrecurso.c_str(),ios::in);
     if(archivo.fail()){
-        cout<<"Archivo invalido";
+        cout<<"\n\t\tArchivo invalido";
         exit(1);}
-        cout<<"Ingrese las notas de los alumnos:"<<endl;
+    cout<<"\n\t\tIngrese las notas de los alumnos:"<<endl;
     while(!archivo.eof()){
         getline(archivo,texto);
         ofstream archivo2;
         archivo2.open("temp.txt",ios::app);
         if(archivo2.fail()){
-            cout<<"Archivo invalido";
+            cout<<"\n\t\tArchivo invalido";
             exit(1);}
             cout<<texto<<" : ";//escribira el nombre de las personas
             cin>>notas;//el susario podra ingresar notas
@@ -271,13 +271,13 @@ void eliminar(){
     string nombrecurso,texto;
     string nomaux,nota;
     int opcion=0;
-    cout<<"1.Eliminar curso\n2.Eliminar alumno"<<endl;
+    cout<<"\n\t\t1.Eliminar curso\n2.Eliminar alumno"<<endl;
     cin>>opcion;
     ofstream archivo;
     ofstream temp;
     ifstream salida;
     if(opcion==1){
-        cout<<"Ingrese el nombre del curso que desea eliminar:"<<endl;
+        cout<<"\n\t\tIngrese el nombre del curso que desea eliminar:"<<endl;
         cin>>nombrecurso;
         archivo.open(nombrecurso.c_str(), ios::out);
         if(archivo.fail()){
@@ -286,7 +286,7 @@ void eliminar(){
         }
         archivo.close();
         remove(nombrecurso.c_str());
-        cout<<"Curso eliminado..."<<endl;
+        cout<<"\n\t\tCurso eliminado..."<<endl;
         getch();
         system("cls");
     }if(opcion==2){
@@ -294,18 +294,18 @@ void eliminar(){
         string nombrecurso;
         string nom;
         double nota;
-        cout<<"Ingrese el nombre del curso, donde se encuentra el alumno a eliminar:"<<endl;
+        cout<<"\n\t\tIngrese el nombre del curso, donde se encuentra el alumno a eliminar:"<<endl;
         cin>>nombrecurso;
         salida.open(nombrecurso.c_str(), ios::in);
         temp.open("Temp.txt", ios::out);
         if(salida.is_open()){
-            cout<<"Nombre a eliminar: ";
+            cout<<"\n\t\tNombre a eliminar: ";
             cin.ignore();
             getline(cin,nomaux);
             while(!salida.eof()){
                 getline(salida,texto);
                 if(nomaux==texto){
-                    cout<<"Eliminado correctamente..."<<endl;
+                    cout<<"\n\t\tEliminado correctamente..."<<endl;
                     Sleep(1500);//--->Permite hacer una pausa por una cantidad determinada de segundos al programa
                 }else{
                     temp<<texto<<endl;
