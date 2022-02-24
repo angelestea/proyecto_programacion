@@ -4,10 +4,10 @@
 #include<stdlib.h>
 #include<string.h>
 #include<fstream>
-#define docente "Juan Torres"
-#define admin "Juliana Zambrano"
-#define contradocen 123456
-#define contraadmin 123456
+#define docente "Juan Torres"//------
+#define admin "Juliana Zambrano"//----
+#define contradocen 123456//---------->Constantes para el ingreso de profesores y contraseña respectiva
+#define contraadmin 123456//---------
 
 
 using namespace std;
@@ -18,7 +18,7 @@ void crearNuevoAlumno();//--->se define función crearNuevoAlumno en scope global
 
 void crearNuevaNota();//para definir la función en scope global
 
-void eliminar();
+void eliminar();//-->Para eliminar curso y alumno
 
 int main()
 {
@@ -51,7 +51,7 @@ int main()
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
-        for(int i=0;i<20;i++){//conflicto ejemplo
+        for(int i=0;i<20;i++){
             for(int j=0;j<20;j++){
                 if(logo[i][j]==1)cout<<char(219);//logo con matriz
                 else cout<<" ";
@@ -65,6 +65,11 @@ int main()
         cout<<"2.Administrador"<<endl;
         cout<<endl;
         cin>>personal;
+        if(personal!=1 || personal!=2){
+            cout<<"\nLos datos ingresados son incorrectos, vuelva a iniciar\n el programa para volver a internar su ingreso"<<endl;
+            break;
+            getch();
+        }
         if (personal==1){
             system("cls");//Limpia la consola
             cout<<"\t=================="<<endl;
@@ -94,7 +99,6 @@ int main()
             }else{
                 cout<<"Datos Incorrectos"<<endl;//si el usurio escribe un numero diferente a 1 o 2
             }
-
         }
         while(s<=3){
             if (usuario==docente && contradocen){
@@ -128,7 +132,6 @@ int main()
                     case 5:{
                         eliminar();
                         break;
-                    //eliminar
                     }
                     default:{
                         x=999;
@@ -286,7 +289,7 @@ void eliminar(){
         string nombrecurso;
         string nom;
         double nota;
-        cout<<"Ingrese el nombre del curso que desea eliminar:"<<endl;
+        cout<<"Ingrese el nombre del curso, donde se encuentra el alumno a eliminar:"<<endl;
         cin>>nombrecurso;
         salida.open(nombrecurso.c_str(), ios::in);
         temp.open("Temp.txt", ios::out);
@@ -298,7 +301,7 @@ void eliminar(){
                 getline(salida,texto);
                 if(nomaux==texto){
                     cout<<"Eliminado correctamente..."<<endl;
-                    Sleep(1500);
+                    Sleep(1500);//--->Permite hacer una pausa por una cantidad determinada de segundos al programa
                 }else{
                     temp<<texto<<endl;
                 }
