@@ -1,21 +1,13 @@
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
-
-
-#define user "Administrador" //Se inicializa el usuario
-#define pass "prueba" //Se inicializa la contraseña
-#define user2 "Docente"
-#define pass2 "prueba2"
-
 #include<stdlib.h>
 #include<string.h>
-#include<windows.h>
 #include<fstream>
 #define docente "Juan Torres"
 #define admin "Juliana Zambrano"
-#define contradocen 546756
-#define contraadmin 987654
+#define contradocen 123456
+#define contraadmin 123456
 
 
 using namespace std;
@@ -26,11 +18,19 @@ void crearNuevoAlumno();//--->se define función crearNuevoAlumno en scope global
 
 void crearNuevaNota();//para definir la función en scope global
 
+void eliminar();
+
 int main()
 {
-    HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
-    SetConsoleTextAttribute(hConsole,2);//Cambio de color ejemplo de conflicto
-    int logo[20][20]={
+    int x=0;
+    string usuario;
+    int personal=0,password=0,nuevo=0;
+    int opcion=0,cursoex=0;
+    do{
+        int s=1;
+        HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
+        SetConsoleTextAttribute(hConsole,2);//Cambio de color ejemplo de conflicto
+        int logo[20][20]={
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -51,42 +51,26 @@ int main()
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
-    for(int i=0;i<20;i++){//conflicto ejemplo
-        for(int j=0;j<20;j++){
-            if(logo[i][j]==1)cout<<char(219);//logo con matriz
-            else cout<<" ";
+        for(int i=0;i<20;i++){//conflicto ejemplo
+            for(int j=0;j<20;j++){
+                if(logo[i][j]==1)cout<<char(219);//logo con matriz
+                else cout<<" ";
+            }
+            cout<<endl;
         }
+        cout<<"Sistema de uso academico para docente y administrador..."<<endl;
         cout<<endl;
-    }
-    string usuario="";
-    int personal=0,password=0,nuevo=0;
-    int opcion=0,cursoex=0;
-    cout<<"Sistema de uso academico para docente y administrador..."<<endl;
-    cout<<endl;
-    //docente y administrador
-    cout<<"1.Docente"<<endl;
-    cout<<"2.Administrador"<<endl;
-    cout<<endl;
-    cin>>personal;
-    if (personal==1){
-        system("cls");//Limpia la consola
-        cout<<"\t=================="<<endl;
-        cout<<"\t|Login de docencia|"<<endl;
-        cout<<"\t=================="<<endl;
+        //docente y administrador
+        cout<<"1.Docente"<<endl;
+        cout<<"2.Administrador"<<endl;
         cout<<endl;
-        cout<<"Usuario: ";//Se solicita al usuario ingresar el usuario precisamente, en este caso es "Docente".
-        cin.ignore();
-        getline(cin,usuario);
-        cout<<endl;
-        cout<<endl;
-        cout<<"Password: ";
-        cin>>password;//Igualmente aquí con la diferencia de que esta vez será con la contraseña.
-    }else{
-        if(personal==2){
-            system("cls");
-            cout<<"\t========================"<<endl;
-            cout<<"\t|Login de administrador|"<<endl;
-            cout<<"\t========================"<<endl;
+        cin>>personal;
+        if (personal==1){
+            system("cls");//Limpia la consola
+            cout<<"\t=================="<<endl;
+            cout<<"\t|Login de docencia|"<<endl;
+            cout<<"\t=================="<<endl;
+            cout<<endl;
             cout<<"Usuario: ";//Se solicita al usuario ingresar el usuario precisamente, en este caso es "Docente".
             cin.ignore();
             getline(cin,usuario);
@@ -95,42 +79,77 @@ int main()
             cout<<"Password: ";
             cin>>password;//Igualmente aquí con la diferencia de que esta vez será con la contraseña.
         }else{
-            cout<<"Datos Incorrectos"<<endl;//si el usurio escribe un numero diferente a 1 o 2
-        }
-
-    }
-    if (usuario==docente && contradocen==password||usuario==admin && contraadmin==password){
-        cout<<"1. cerar un nuevo curso"<<endl;
-        cout<<"2. crear un nuevo alumno"<<endl;
-        cout<<"3. crear nueva nota"<<endl;
-        cout<<"4. modificar"<<endl;
-        cin>>opcion;//variable para tipo entero que servira para el condicionla en la parte inferior
-
-        switch(opcion){
-            case 1:{
-                crearcurso();
-                break;
-            }
-            case 2:{
-                crearNuevoAlumno();
-            break;
-            }
-            case 3:{
-                crearNuevaNota();
-             //registrar nota
-            break;
-            }
-            case 4:{
-            //modificar
-            break;
+            if(personal==2){
+                system("cls");
+                cout<<"\t========================"<<endl;
+                cout<<"\t|Login de administrador|"<<endl;
+                cout<<"\t========================"<<endl;
+                cout<<"Usuario: ";//Se solicita al usuario ingresar el usuario precisamente, en este caso es "Docente".
+                cin.ignore();
+                getline(cin,usuario);
+                cout<<endl;
+                cout<<endl;
+                cout<<"Password: ";
+                cin>>password;//Igualmente aquí con la diferencia de que esta vez será con la contraseña.
+            }else{
+                cout<<"Datos Incorrectos"<<endl;//si el usurio escribe un numero diferente a 1 o 2
             }
 
         }
-    }else{
-        cout<<endl;
-        cout<<"Datos incorrectos..."<<endl;
-    }
+        while(s<=3){
+            if (usuario==docente && contradocen){
+                s=4;
+                system("cls");
+                cout<<"1. Cerar un nuevo curso"<<endl;
+                cout<<"2. Crear un nuevo alumno"<<endl;
+                cout<<"3. Crear nueva nota"<<endl;
+                cout<<"4. Modificar"<<endl;
+                cout<<"5. Eliminar"<<endl;
+                cout<<"6. Salir"<<endl;
+                cin>>opcion;//variable para tipo entero que servira para el condicionla en la parte inferior
+                system("cls");
+                switch(opcion){
+                    case 1:{
+                        crearcurso();
+                        break;
+                    }
+                    case 2:{
+                        crearNuevoAlumno();
+                        break;
+                    }
+                    case 3:{
+                        crearNuevaNota();
+                        break;
+                    }
+                    case 4:{
+                    //modificar
+                        break;
+                    }
+                    case 5:{
+                        eliminar();
+                        break;
+                    //eliminar
+                    }
+                    default:{
+                        x=999;
+                        cout<<"Programa finalizado..."<<endl;
+                    }
 
+                }
+            }else{
+                system("cls");
+                cout<<endl;
+                cout<<"Datos incorrectos...\n"<<endl;
+                cout<<"Usuario: ";
+                cin.ignore();
+                getline(cin,usuario);
+                cout<<"\n";
+                cout<<"Password: ";
+                cin>>password;//Igualmente aquí con la diferencia de que esta vez será con la contraseña.
+                s++;
+            }
+        }
+    }while(x<999);
     getch();
     return 0;
 }
@@ -200,6 +219,9 @@ void crearNuevaNota(){
     double notas=0;
     string texto,nombrecurso,resultado;
     ifstream archivo;
+    string apro="Aprobado";
+    string rem="Remedial";
+    string repro="Reprobado";
     cout<<"Ingrese el nombre del curso:"<<endl;
     cin>>nombrecurso;
 
@@ -218,15 +240,56 @@ void crearNuevaNota(){
             cout<<texto<<" : ";//escribira el nombre de las personas
             cin>>notas;//el susario podra ingresar notas
             if(notas>=7 && notas<=10){
-                archivo2<<texto<<"---"<<notas<<"---aprobado"<<endl;//si esta entre 10 y 7 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
-            }else if(notas>=6&&notas<=5){
-                archivo2<<texto<<"---"<<notas<<"---reprobado"<<endl;//si esta entr 6 y 5  agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
+                archivo2<<"Nombre: "<<texto<<endl;//si esta entre 10 y 7 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
+                archivo2<<"Nota: "<<notas<<endl;
+                archivo2<<"Estado: "<<apro<<endl;
+                archivo2<<"-------------------------"<<endl;
+            }else if(notas>=6&&notas<=4){
+                archivo2<<"Nombre: "<<texto<<endl;//si esta entre 10 y 7 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
+                archivo2<<"Nota: "<<notas<<endl;
+                archivo2<<"Estado: "<<rem<<endl;
+                archivo2<<"-------------------------"<<endl;
             }else{
-                archivo2<<texto<<"---"<<notas<<"---remedial"<<endl;//si es inferiro a 5 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
+                archivo2<<"Nombre: "<<texto<<endl;//si esta entre 10 y 7 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
+                archivo2<<"Nota: "<<notas<<endl;
+                archivo2<<"Estado: "<<repro<<endl;
+                archivo2<<"-------------------------"<<endl;
             }
     archivo2.close();
     }
     archivo.close();
     remove(nombrecurso.c_str());
     rename("temp.txt",nombrecurso.c_str());
+}
+void eliminar(){
+    string nombrecurso,nombres,texto,nomaux;
+    int opcion=0;
+    cout<<"1.Eliminar curso\n2.Eliminar alumno"<<endl;
+    cin>>opcion;
+    ofstream archivo;
+    ofstream temp;
+    ifstream salida;
+    if(opcion==1){
+        cout<<"Ingrese el nombre del curso que desea eliminar:"<<endl;
+        cin>>nombrecurso;
+        archivo.open(nombrecurso.c_str(), ios::out);
+        if(archivo.fail()){
+        cout<<"Archivo invalido";
+        exit(1);
+        }
+        archivo.close();
+        remove(nombrecurso.c_str());
+        cout<<"Curso eliminado..."<<endl;
+        getch();
+        system("cls");
+    }if(opcion==2){
+        system("cls");
+        string nombrecurso;
+        string nom;
+        double nota;
+        cout<<"Ingrese el nombre del curso que desea eliminar:"<<endl;
+        cin>>nombrecurso;
+        salida.open(nombrecurso.c_str(), ios::in);
+        temp.open("Temp.txt");
+    }
 }

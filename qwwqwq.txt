@@ -1,4 +1,4 @@
-Nombre: Carlos Garcia
+Nombre: Carlos Alvares
 Nota: 8
 Estado: Aprobado
 -------------------------
@@ -9,12 +9,4 @@ Estado: Aprobado
 Nombre: Pedro
 Nota: 6
 Estado: Reprobado
--------------------------
-Nombre: Ruben Diaz
-Nota: 4
-Estado: Remedial
--------------------------
-Nombre: Anthony Grijalva
-Nota: 9
-Estado: Aprobado
 -------------------------
