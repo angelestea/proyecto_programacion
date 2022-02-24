@@ -58,15 +58,20 @@ int main()
             }
             cout<<endl;
         }
-        cout<<"Sistema de uso academico para docente y administrador..."<<endl;
+        cout<<"\tSistema de uso academico para docencia y administración"<<endl;
         cout<<endl;
         //docente y administrador
-        cout<<"1.Docente"<<endl;
-        cout<<"2.Administrador"<<endl;
-        cout<<endl;
-        cin>>personal;
-        if(personal!=1 || personal!=2){
-            cout<<"\nLos datos ingresados son incorrectos, vuelva a iniciar\n el programa para volver a internar su ingreso"<<endl;
+        cout<<"\n\n\t1.Docente"<<endl;
+        cout<<"\n\n\t2.Administrador"<<endl;
+        cout<<"\n\n\t3.Salir"<<endl;
+        cout<<"\n\n\t->";cin>>personal;
+        if(personal==3){
+            cout<<"\n\n\tSaliendo.."<<endl;
+            break;
+            getch();
+        }
+        if(personal!=1 && personal!=2){
+            cout<<"\n\n\tLos datos ingresados son incorrectos, vuelva a iniciar el programa"<<endl;
             break;
             getch();
         }
@@ -76,12 +81,12 @@ int main()
             cout<<"\t|Login de docencia|"<<endl;
             cout<<"\t=================="<<endl;
             cout<<endl;
-            cout<<"Usuario: ";//Se solicita al usuario ingresar el usuario precisamente, en este caso es "Docente".
+            cout<<"\n\tUsuario: ";//Se solicita al usuario ingresar el usuario precisamente, en este caso es "Docente".
             cin.ignore();
             getline(cin,usuario);
             cout<<endl;
             cout<<endl;
-            cout<<"Password: ";
+            cout<<"\n\tPassword: ";
             cin>>password;//Igualmente aquí con la diferencia de que esta vez será con la contraseña.
         }else{
             if(personal==2){
@@ -89,15 +94,15 @@ int main()
                 cout<<"\t========================"<<endl;
                 cout<<"\t|Login de administrador|"<<endl;
                 cout<<"\t========================"<<endl;
-                cout<<"Usuario: ";//Se solicita al usuario ingresar el usuario precisamente, en este caso es "Docente".
+                cout<<"\tUsuario: ";//Se solicita al usuario ingresar el usuario precisamente, en este caso es "Docente".
                 cin.ignore();
                 getline(cin,usuario);
                 cout<<endl;
                 cout<<endl;
-                cout<<"Password: ";
+                cout<<"\n\tPassword: ";
                 cin>>password;//Igualmente aquí con la diferencia de que esta vez será con la contraseña.
             }else{
-                cout<<"Datos Incorrectos"<<endl;//si el usurio escribe un numero diferente a 1 o 2
+                cout<<"\n\n\tDatos Incorrectos"<<endl;//si el usurio escribe un numero diferente a 1 o 2
             }
         }
         while(s<=3){
