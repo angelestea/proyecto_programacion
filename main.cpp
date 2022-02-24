@@ -100,7 +100,7 @@ int main()
             if (usuario==docente && contradocen){
                 s=4;
                 system("cls");
-                cout<<"1. Cerar un nuevo curso"<<endl;
+                cout<<"1. Crear un nuevo curso"<<endl;
                 cout<<"2. Crear un nuevo alumno"<<endl;
                 cout<<"3. Crear nueva nota"<<endl;
                 cout<<"4. Modificar"<<endl;
@@ -219,9 +219,7 @@ void crearNuevaNota(){
     double notas=0;
     string texto,nombrecurso,resultado;
     ifstream archivo;
-    string apro="Aprobado";
-    string rem="Remedial";
-    string repro="Reprobado";
+
     cout<<"Ingrese el nombre del curso:"<<endl;
     cin>>nombrecurso;
 
@@ -240,19 +238,19 @@ void crearNuevaNota(){
             cout<<texto<<" : ";//escribira el nombre de las personas
             cin>>notas;//el susario podra ingresar notas
             if(notas>=7 && notas<=10){
-                archivo2<<"Nombre: "<<texto<<endl;//si esta entre 10 y 7 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
-                archivo2<<"Nota: "<<notas<<endl;
-                archivo2<<"Estado: "<<apro<<endl;
+                archivo2<<texto<<endl;//si esta entre 10 y 7 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
+                archivo2<<notas<<endl;
+                archivo2<<"Aprobado"<<endl;
                 archivo2<<"-------------------------"<<endl;
             }else if(notas>=6&&notas<=4){
-                archivo2<<"Nombre: "<<texto<<endl;//si esta entre 10 y 7 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
-                archivo2<<"Nota: "<<notas<<endl;
-                archivo2<<"Estado: "<<rem<<endl;
+                archivo2<<texto<<endl;//si esta entre 10 y 7 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
+                archivo2<<notas<<endl;
+                archivo2<<"Remedial"<<endl;
                 archivo2<<"-------------------------"<<endl;
             }else{
-                archivo2<<"Nombre: "<<texto<<endl;//si esta entre 10 y 7 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
-                archivo2<<"Nota: "<<notas<<endl;
-                archivo2<<"Estado: "<<repro<<endl;
+                archivo2<<texto<<endl;//si esta entre 10 y 7 agrega al archivo lo que esta el la variable texto y lo nota que se encuntra
+                archivo2<<notas<<endl;
+                archivo2<<"Reprobado"<<endl;
                 archivo2<<"-------------------------"<<endl;
             }
     archivo2.close();
@@ -262,7 +260,8 @@ void crearNuevaNota(){
     rename("temp.txt",nombrecurso.c_str());
 }
 void eliminar(){
-    string nombrecurso,nombres,texto,nomaux;
+    string nombrecurso,texto;
+    string nomaux,nota;
     int opcion=0;
     cout<<"1.Eliminar curso\n2.Eliminar alumno"<<endl;
     cin>>opcion;
@@ -290,6 +289,21 @@ void eliminar(){
         cout<<"Ingrese el nombre del curso que desea eliminar:"<<endl;
         cin>>nombrecurso;
         salida.open(nombrecurso.c_str(), ios::in);
-        temp.open("Temp.txt");
+        temp.open("Temp.txt", ios::out);
+        if(salida.is_open()){
+            cout<<"Nombre a eliminar: ";
+            cin.ignore();
+            getline(cin,nomaux);
+            while(!salida.eof()){
+                getline(salida,texto);
+                if(nomaux==texto){
+                    cout<<"Eliminado correctamente..."<<endl;
+                    Sleep(1500);
+                }else{
+                    temp<<texto<<endl;
+                }
+            }
+        }
+
     }
 }

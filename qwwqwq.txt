@@ -1,12 +1,12 @@
-Nombre: Carlos Alvares
-Nota: 8
-Estado: Aprobado
+Carlos Alvares
+8
+Aprobado
 -------------------------
-Nombre: Juan Torres
-Nota: 7
-Estado: Aprobado
+Juan Torres
+7
+Aprobado
 -------------------------
-Nombre: Pedro
-Nota: 6
-Estado: Reprobado
+Pedro
+6
+Reprobado
 -------------------------
