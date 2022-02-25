@@ -4,6 +4,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<fstream>
+#include <cstdlib>
 #define docente "Juan Torres"
 #define admin "Juliana Zambrano"
 #define contradocen 123456
@@ -19,6 +20,16 @@ void crearNuevoAlumno();//--->se define función crearNuevoAlumno en scope global
 void crearNuevaNota();//para definir la función en scope global
 
 void eliminar();
+
+void modifica();
+
+void CorreNota();
+
+void leerArchivo2();
+
+void RenombrarAlumno();
+
+void renombrarArchivo();
 
 int main()
 {
@@ -122,7 +133,7 @@ int main()
                         break;
                     }
                     case 4:{
-                    //modificar
+                        modifica();//modificar
                         break;
                     }
                     case 5:{
@@ -171,6 +182,7 @@ void crearcurso(){
         exit(1);
     }
     cout<<"Curso creado...";
+    system("cls");
 }
 
 void crearNuevoAlumno(){
@@ -211,6 +223,7 @@ void crearNuevoAlumno(){
         }
     }while(x<999);
     archivo.close();
+    system("cls");
 }
 void crearNuevaNota(){
     system("cls");
@@ -261,7 +274,9 @@ void crearNuevaNota(){
 }
 void eliminar(){
     string nombrecurso,texto;
-    string nomaux,nota;
+    string nomaux,estado;
+    estado="a";
+    double nota;
     int opcion=0;
     cout<<"1.Eliminar curso\n2.Eliminar alumno"<<endl;
     cin>>opcion;
@@ -297,8 +312,7 @@ void eliminar(){
             while(!salida.eof()){
                 getline(salida,texto);
                 if(nomaux==texto){
-                    cout<<"Eliminado correctamente..."<<endl;
-                    Sleep(1500);
+                    cout<<"Eliminado..."<<endl;
                 }else{
                     temp<<texto<<endl;
                 }
@@ -306,4 +320,95 @@ void eliminar(){
         }
 
     }
+}
+bool existeArchivo(char nombreA[100])
+{
+    fstream archivo;
+    archivo.open(nombreA,std::ios::in);
+    if(archivo.good()==true)
+    {
+        return true;
+    }else
+    {
+        return false;
+    }
+
+}
+void modifica(){
+    system("cls");
+    HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
+    SetConsoleTextAttribute(hConsole,1005);
+    int op=0;
+    cout<<"\n\t\t¿Que parte desea modificar?"<<endl;
+    cout<<"1. Un curso"<<endl;
+    cout<<"2. Un alumno"<<endl;
+    cout<<"3. Una nota"<<endl;
+    cin>>op;
+    if (op==1)
+    {renombrarArchivo();}
+    if (op==2)
+    {RenombrarAlumno();}
+    if (op=3)
+    {CorreNota();}
+}
+void renombrarArchivo()
+{
+    char originalN[100],nuevoN[100];
+    cout<<"\n\t\tIngrese el nombre del curso a buscar:"<<endl;
+    cin>>originalN;
+    if(existeArchivo(originalN)==true)
+    {
+        cout<<"Ingrese el nuevo nombre: "<<endl;
+        cin>>nuevoN;
+        if(rename(originalN,nuevoN)==0)
+        {
+            cout<<"El archivo {"<<originalN<<"} Fue renombrado como: {"<<nuevoN<<"}"<<endl;
+            system("pause");
+        }
+    }else{
+        cout<<"El archivo {"<<originalN<<"} No existe"<<endl;
+    }
+
+}
+
+void RenombrarAlumno()
+{
+    system("cls");
+    HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
+    SetConsoleTextAttribute(hConsole,3);
+    fstream archivo;
+    string nombrecurso, texto;
+    cout<<"\n\t\tIngrese el nombre del curso del alumno:"<<endl;
+    cin>>nombrecurso;
+    void leerArchivo2();
+    system("pause");
+}
+
+void leerArchivo2()
+{
+    fstream archivo;
+    string nombrecurso, texto;
+    archivo.open(nombrecurso.c_str(),ios::in);
+    if(archivo.is_open()){
+        char c;
+        while(!archivo.eof())
+        {
+            c=archivo.get();
+            cout<<c;
+        }
+        archivo.close();
+    }else{cout<<"No se encontro el archivo"<<endl;}
+    system("pause");
+}
+void CorreNota()
+{
+    system("cls");
+    HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
+    SetConsoleTextAttribute(hConsole,8);
+    fstream archivo;
+    string nombrecurso, texto;
+    cout<<"\n\t\tIngrese el nombre del curso del alumno:"<<endl;
+    cin>>nombrecurso;
+    void leerArchivo2();
+    system("pause");
 }
