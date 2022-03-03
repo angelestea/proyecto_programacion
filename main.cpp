@@ -115,7 +115,7 @@ int main()
             }
         }
         while(s<=3){
-            if (usuario==docente && contradocen){
+            if (usuario==docente && password==contradocen){
                 s=4;
                 system("cls");
                 cout<<"\n\t\t1. Crear un nuevo curso"<<endl;
@@ -154,16 +154,34 @@ int main()
 
                 }
             }else{
-                system("cls");
-                cout<<endl;
-                cout<<"\n\tDatos incorrectos...\n"<<endl;
-                cout<<"\tUsuario: ";
-                cin.ignore();
-                getline(cin,usuario);
-                cout<<"\n";
-                cout<<"\tPassword: ";
-                cin>>password;//Igualmente aqu� con la diferencia de que esta vez ser� con la contrase�a.
-                s++;
+                if(usuario==admin && password==contraadmin){
+                    s=4;
+                    string nombrecurso,texto;
+                    cout<<"Ingrese el curso para ver un informe de los alumnos:"<<endl;
+                    cin>>nombrecurso;
+                    ifstream archivo;
+                    archivo.open(nombrecurso.c_str(),ios::in);
+                    if(archivo.fail()){
+                        cout<<"No se pudo abrir el archivo";
+                        exit(1);}
+                    system("cls");
+                    while(!archivo.eof()){
+                        getline(archivo,texto);
+                        cout<<texto<<endl;
+                    }
+                getch();
+                }else{
+                    system("cls");
+                    cout<<endl;
+                    cout<<"\n\tDatos incorrectos...\n"<<endl;
+                    cout<<"\tUsuario: ";
+                    cin.ignore();
+                    getline(cin,usuario);
+                    cout<<"\n";
+                    cout<<"\tPassword: ";
+                    cin>>password;//Igualmente aqu� con la diferencia de que esta vez ser� con la contrase�a.
+                    s++;
+                }
             }
         }
     }while(x<999);
