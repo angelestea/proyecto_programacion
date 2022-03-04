@@ -366,7 +366,7 @@ void modifica(){
     HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);//Cambio de color
     SetConsoleTextAttribute(hConsole,1005);
     int op=0;
-    cout<<"\n\t\t�Que parte desea modificar?"<<endl;
+    cout<<"\n\t\tQue parte desea modificar?"<<endl;
     cout<<"1. Un curso"<<endl;
     cout<<"2. Un alumno"<<endl;
     cout<<"3. Una nota"<<endl;
