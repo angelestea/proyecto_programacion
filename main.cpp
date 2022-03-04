@@ -91,15 +91,15 @@ int main()
         if (personal==1){
             system("cls");//Limpia la consola
             cout<<"\n\t\t\t\t\t\t\t\t\t ================"<<endl;
-            cout<<"\n\t\t\t\t\t\t\t\t\t|Login de docencia|"<<endl;
-            cout<<"\n\t\t\t\t\t\t\t\t\t ================"<<endl;
+            cout<<"\t\t\t\t\t\t\t\t\t|Login de docencia|"<<endl;
+            cout<<"\t\t\t\t\t\t\t\t\t ================"<<endl;
             cout<<endl;
             cout<<"\n\t\t\t\t\t\t\tUsuario: ";//Se solicita al usuario ingresar el usuario precisamente, en este caso es "Docente".
             cin.ignore();
             getline(cin,usuario);
             cout<<endl;
             cout<<endl;
-            cout<<"\n\t\t\t\t\t\t\tPassword: ";
+            cout<<"\t\t\t\t\t\t\tPassword: ";
             char caracter;
             caracter = getch();
 
@@ -113,15 +113,15 @@ int main()
         }else{
             if(personal==2){
                 system("cls");
-                cout<<"\n\t\t\t\t\t\t\t\t ======================="<<endl;
-                cout<<"\n\t\t\t\t\t\t\t\t\t|Login de administrador|"<<endl;
-                cout<<"\n\t\t\t\t\t\t\t\t ======================="<<endl;
-                cout<<"\n\t\t\t\t\t\t\t\t\tUsuario: ";//Se solicita al usuario ingresar el usuario precisamente, en este caso es "Docente".
+                cout<<"\n\t\t\t\t\t\t\t\t ====================="<<endl;
+                cout<<"\t\t\t\t\t\t\t\t|Login de administrador|"<<endl;
+                cout<<"\t\t\t\t\t\t\t\t ======================"<<endl;
+                cout<<"\n\t\t\t\t\t\t\tUsuario: ";//Se solicita al usuario ingresar el usuario precisamente, en este caso es "Docente".
                 cin.ignore();
                 getline(cin,usuario);
                 cout<<endl;
                 cout<<endl;
-                cout<<"\n\t\t\t\t\t\t\t\t\tPassword: ";
+                cout<<"\t\t\t\t\t\t\t\t\tPassword: ";
                 char caracter;
                 caracter = getch();
                 password="";
@@ -193,7 +193,7 @@ int main()
                     system("cls");
                     cout<<endl;
                     cout<<"\n\t\t\t\t\t\t\t\tDatos incorrectos...\n"<<endl;
-                    cout<<"\n\t\t\t\t\t\t\t\tUsuario: ";
+                    cout<<"\t\t\t\t\t\t\t\tUsuario: ";
                     cin.ignore();
                     getline(cin,usuario);
                     cout<<"\n";
@@ -221,9 +221,9 @@ void crearcurso(){
     int cursoex=0;
     string nombrecurso,texto;
     ofstream archivo1;//declarar la variabe de un archivo para ingresar datos
-    cout<<"\t\t\t\t\t\t\t ==========================="<<endl;
-    cout<<"\t\t\t\t\t\t\t|Ingrese el nombre del curso|"<<endl;
-    cout<<"\t\t\t\t\t\t\t ==========================="<<endl;
+    cout<<"\t\t\t\t\t\t\t\t ==========================="<<endl;
+    cout<<"\t\t\t\t\t\t\t\t|Ingrese el nombre del curso|"<<endl;
+    cout<<"\t\t\t\t\t\t\t\t ==========================="<<endl;
     cin.ignore();
     getline(cin,nombrecurso);
 
@@ -247,9 +247,9 @@ void crearNuevoAlumno(){
     string nombrecurso;
     string nombreAlumno, texto;
     ofstream archivo;//--->Declara la variable de archivo2 para ingresas datos
-    cout<<"\t\t\t\t\t\t\t ==========================="<<endl;
-    cout<<"\t\t\t\t\t\t\t|Ingrese el nombre del curso|"<<endl;
-    cout<<"\t\t\t\t\t\t\t ==========================="<<endl;
+    cout<<"\t\t\t\t\t\t\t\t ==========================="<<endl;
+    cout<<"\t\t\t\t\t\t\t\t|Ingrese el nombre del curso|"<<endl;
+    cout<<"\t\t\t\t\t\t\t\t ==========================="<<endl;
     cin>>nombrecurso;
     archivo.open(nombrecurso.c_str(), ios::app);//-->se declara app para agregar m�s datos
 
