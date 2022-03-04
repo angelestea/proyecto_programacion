@@ -1,2 +1,5 @@
-# programming_project🤖
-Este repositorio tiene la funcionalidad de mejorar el desarrollo del proyecto de programación.
+# programming´s project🤖
+
+In this repository you can see the process implemented in this project.
+
+Enjoy!
